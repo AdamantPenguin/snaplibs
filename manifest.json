@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "Snap! Community Libraries",
+    "developer": {
+        "name": "AdamantPenguin",
+        "url": "https://adamantpenguin.github.io/"
+    },
+    "version": "1.0",
+    "description": "Import Snap! libraries made by the community",
+    "icons": {
+        "48": "icons/snap_icon_48.png"
+    },
+    "page_action": {
+        "default_icon": "icons/plus_icon_48.png",
+        "default_title": "Import community library",
+        "browser_style": true,
+        "show_matches": ["https://snap.berkeley.edu/snap/*"],
+        "pinned": true,
+        "default_popup": "popup/index.html"
+    },
+    "permissions": ["activeTab"]
+}
