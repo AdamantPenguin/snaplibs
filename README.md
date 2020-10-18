@@ -11,7 +11,7 @@ does exist, it will show its metadata and enable the "import" button. Clicking t
 and import it into Snap!.
 
 ## To-do list
- - [ ] add a library browser to choose libraries graphically rather than by typing the name
+ - [ ] add a library browser to choose libraries graphically rather than by typing the name (see issue #1)
  - [ ] allow user to change the URL of the list of libraries
 
 ## Contributing
