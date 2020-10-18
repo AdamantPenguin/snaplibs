@@ -52,7 +52,7 @@ function updateInfo() {
         // the library probably doesn't exist if that errors, assume that is the case because lAzY
         outtag.innerText = "Library not found";
         authtag.innerText = "N/A";
-        authhref.href = "";
+        authhref.removeAttribute("href"); // no more link
 
         importbut.disabled = true;
     }
