@@ -33,19 +33,27 @@ async function init() {
     inbox = document.querySelector("#libName"); // input box
     inbox.addEventListener("input", updateInfo); // add event listener to input box (yes i know i shouldn't be using addEventListener)
     outtag = document.querySelector("#libInfo"); // italicised output area for the description
+    authhref = document.querySelector("#libAuthorHref"); // <a> tag for the author field
+    authtag = document.querySelector("#libAuthor"); // italics bit for the author field
     importbut = document.querySelector("#importButton"); // button that imports
     importbut.addEventListener("click", importLib); // event listener for when you click the button
 };
 
 function updateInfo() {
     try {
-        // set the description to the description of the entered library
+        // set the description and author to that of the entered library
         outtag.innerText = listToUse[inbox.value].description;
+        authtag.innerText = listToUse[inbox.value].author;
+        authhref.href = listToUse[inbox.value].homepage;
+
         importbut.disabled = false;
     }
     catch(e) {
         // the library probably doesn't exist if that errors, assume that is the case because lAzY
         outtag.innerText = "Library not found";
+        authtag.innerText = "N/A";
+        authhref.href = "";
+
         importbut.disabled = true;
     }
 };
