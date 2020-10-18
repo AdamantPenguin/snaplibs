@@ -68,4 +68,4 @@ async function importLib() {
     window.close() // close the popup because it is not needed anymore
 };
 
-init(); // run the stuff (needed like this because async function)
+init(); // run the stuff (needs to be like this because of init() being async function)
