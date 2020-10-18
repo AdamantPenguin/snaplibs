@@ -12,6 +12,7 @@ and import it into Snap!.
 
 ## To-do list
  - [ ] add a library browser to choose libraries graphically rather than by typing the name (see issue #1)
+ - [ ] create a GitHub Pages site in /docs for sharing/download links, and also put default lists and hosted/testing libraries in /docs/data
  - [ ] allow user to change the URL of the list of libraries
 
 ## Contributing
