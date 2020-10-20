@@ -35,6 +35,8 @@ async function init() {
     outtag = document.querySelector("#libInfo"); // italicised output area for the description
     importbut = document.querySelector("#importButton"); // button that imports
     importbut.addEventListener("click", importLib); // event listener for when you click the button
+    choosebut = document.querySelector("#chooserButton"); // the button that opens the library chooser
+    choosebut.addEventListener("click", useChooser)
 };
 
 function updateInfo() {
@@ -67,5 +69,14 @@ async function importLib() {
     })});
     window.close() // close the popup because it is not needed anymore
 };
+
+async function useChooser() {
+    // open the library chooser
+    var chooserWindow = await browser.windows.create({
+        url: "libraries.html",
+        type: "popup",
+        state: "normal"
+    });
+}
 
 init(); // run the stuff (needed like this because async function)
