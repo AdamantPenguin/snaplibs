@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {
+                padding: 20px;
+                display: inline;
+                width: 350px;
+            }
+            h1, div {
+                text-align: center;
+            }
+            #chooserButton {
+                width: 40%;
+                height: 35px;
+                text-align: center;
+            }
+            h6:before, h6:after {
+                content: "\2003\2003\2003\2003\2003\2003\2003\2003\2003\2003\2003\2003\2003\2003";
+                text-decoration: line-through;
+            }
+            h6 {
+                color: #aaaaaa;
+                text-align: center;
+            }
+        </style>
     </head>
-    <body style="padding: 20px; display: inline; width: 350px;">
+    <body>
         <h1>Import library</h1>
+        <div>
+            <button id="chooserButton">Browse...</button>
+        </div><br>
+        <h6> OR </h6>
         Enter the name of the library: <br><br>
-        <input type="text" id="libName" style="width: 80%; height: 35px;"><button id="chooserButton" style="width: 20%; height: 35px;">...</button>
+        <input type="text" id="libName">
         <br><br>
         <p>Description: <i id="libInfo"></i></p>
         <button id="importButton" disabled>Import</button>
