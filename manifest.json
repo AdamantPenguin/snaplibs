@@ -5,7 +5,7 @@
         "name": "AdamantPenguin",
         "url": "https://adamantpenguin.github.io/"
     },
-    "version": "1.0",
+    "version": "0.1",
     "description": "Import Snap! libraries made by the community",
     "icons": {
         "48": "icons/snap_icon_48.png"
@@ -18,5 +18,11 @@
         "pinned": true,
         "default_popup": "popup/index.html"
     },
-    "permissions": ["activeTab"]
+    "permissions": [
+        "activeTab",
+        "*://raw.githubusercontent.com/AdamantPenguin/*"
+    ],
+    "optional_permissions": [
+        "<all_urls>"
+    ]
 }

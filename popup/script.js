@@ -1,6 +1,5 @@
 var listToUse;
 const DEFAULT_LIST = "https://adamantpenguin.github.io/snap_lib_list.json"; // this is the URL of the default list
-const CORS_PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // this is the URL of the CORS proxy endpoint to append the URLs to
 const FALLBACK_LIST = { // this is the list to use if the default list couldn't be retrieved (e.g. i deleted it for some reason)
     "test": {
         "description": "Test library (doesn't exist) - from fallback",
@@ -11,7 +10,7 @@ const FALLBACK_LIST = { // this is the list to use if the default list couldn't 
 async function init() {
     try {
         // get the list from internet
-        var listObj = fetch(CORS_PROXY_URL + DEFAULT_LIST, {
+        var listObj = fetch(DEFAULT_LIST, {
             cache: "no-cache" // no cache because then problems happen
         }).then(data => {return data});
         listToUse = await listObj.then(data => {return data.json()}); // get the json from the response
@@ -20,11 +19,13 @@ async function init() {
     catch(e) {
         // in case there was an error in fetch()
         listToUse = FALLBACK_LIST;
+        alert("Couldn't fetch the package index");
         console.log(e);
     };
     if (listToUse === undefined) {
         // in case the internet list was successful but didn't return (e.g. error 404)
         listToUse = FALLBACK_LIST;
+        alert("Couldn't fetch the package index");
         console.log("internet list was undefined");
     };
     console.log("using list " + listToUse);
@@ -60,9 +61,31 @@ function updateInfo() {
 
 async function importLib() {
     // import the library into Snap!
-    var xmlGetter = fetch(CORS_PROXY_URL + listToUse[inbox.value].url, {
+
+    // check if it is hosted somewhere other than github (because extra permissions)
+    if (listToUse[inbox.value].url.match("\/\/raw\.githubusercontent\.com") === null) {
+        if (confirm("The library " + inbox.value + " is hosted somewhere I can't access. Grant extra permissions to access it?")) {
+            await browser.permissions.request({ // ask for permission for that specific page
+                origins: [listToUse[inbox.value].url]
+            }).then(result => {
+                if (!result) {
+                    alert("unable to import library due to no permissions")
+                    return
+                };
+            });
+        } else {
+            alert("unable to import library due to no permissions")
+            return
+        };
+    };
+
+    var xmlGetter = fetch(listToUse[inbox.value].url, {
         cache: "no-cache" // same reason as above
+    }).catch(error => { // if it couldn't get the thing
+        console.log(error);
+        alert("unexpected error while downloading library :(");
     }).then(data => {return data});
+
     var xmlGot = await xmlGetter.then(data => {return data.text()}); // return text as a string because xml
     console.log("Downloaded library from " + listToUse[inbox.value].url);
 
