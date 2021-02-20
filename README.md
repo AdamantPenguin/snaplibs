@@ -12,7 +12,7 @@ and import it into Snap! via the drag and drop handler.
 
 ## To-do list
  - [ ] allow dependencies (VERY IMPORTANT) and other useful metadata
- - [ ] add a browser to choose packages graphically rather than by typing the name (see issue #1)
+ - [x] add a browser to choose packages graphically rather than by typing the name (see issue #1)
  - [ ] create a GitHub Pages site for sharing/download links, and also put default lists and packages somewhere (new repo?)
  - [ ] allow user to add extra repositories
 
