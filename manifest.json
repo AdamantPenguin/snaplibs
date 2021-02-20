@@ -18,5 +18,11 @@
         "pinned": true,
         "default_popup": "popup/index.html"
     },
-    "permissions": ["activeTab"]
+    "permissions": [
+        "activeTab",
+        "*://raw.githubusercontent.com/AdamantPenguin/*"
+    ],
+    "optional_permissions": [
+        "<all_urls>"
+    ]
 }
