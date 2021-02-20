@@ -11,11 +11,11 @@ function importLib(message) {
     
     var frd = new FileReader(); // new file reader
     var target = wrappedJSObject.world.children[0]; // Morphic.js stuff (sorry about wrappedJSObject)
-    frd.onloadend = (e) => { // once the file is loaded in the file reader
+    frd.onloadend = (e) => { // once the file has been loaded as text
         target.droppedText(e.target.result, aFile.name, aFile.type); // drop it into the snap window (more Morphic nonsense here)
         console.log("imported library " + libName);
     };
-    frd.readAsText(aFile); // idk what this is i just copied this section from the snap source code
+    frd.readAsText(aFile); // load the file as text (triggering onloadend defined above)
 
 };
 
